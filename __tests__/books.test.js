@@ -16,11 +16,14 @@ describe('Book tests', () => {
     expect(singleEntity).toHaveProperty('title', 'Spice and Wolf');
   });
 
-  it.skip('Should render a single book with the id of 3', async () => {
-    const resp = await request(app).get('books/3');
-    expect(resp).toHaveProperty('title', 'Spice and Wolf');
-    expect(resp).toHaveProperty('release', 2006);
-    expect(resp).toHaveProperty('author', 'Isuna Hasekura');
+  it('Should render a single book with the id of 3', async () => {
+    const resp = await request(app).get('/books/3');
+    const keeper = {
+      title: 'My Sisters Keeper',
+      release: 2004,
+      author: 'Jodi Picoult',
+    };
+    expect(resp.body).toEqual(keeper);
   });
 
   afterAll(() => {

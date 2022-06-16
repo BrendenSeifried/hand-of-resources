@@ -2,6 +2,7 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
+const { util } = require('prettier');
 
 describe('Book tests', () => {
   beforeEach(() => {
@@ -49,6 +50,15 @@ describe('Book tests', () => {
     expect(resp.body).toHaveProperty('title', 'Book has been updated');
     expect(resp.body).toHaveProperty('release', 2050),
       expect(resp.body).toHaveProperty('author', 'Future Person');
+    expect(resp.body.id).not.toBeUndefined();
+  });
+
+  it('Should Delete a book', async () => {
+    const resp = await request(app).delete('/books/1');
+    expect(resp.status).toEqual(200);
+
+    const { body } = await request(app).get('/books/1');
+    expect(body).toEqual(null);
   });
 
   afterAll(() => {

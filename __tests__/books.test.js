@@ -39,6 +39,18 @@ describe('Book tests', () => {
     expect(resp.body.id).not.toBeUndefined();
   });
 
+  it('Should update existing book', async () => {
+    const resp = await request(app).put('/books/1').send({
+      title: 'Book has been updated',
+      release: 2050,
+      author: 'Future Person',
+    });
+    expect(resp.status).toEqual(200);
+    expect(resp.body).toHaveProperty('title', 'Book has been updated');
+    expect(resp.body).toHaveProperty('release', 2050),
+      expect(resp.body).toHaveProperty('author', 'Future Person');
+  });
+
   afterAll(() => {
     pool.end();
   });

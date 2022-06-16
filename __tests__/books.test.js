@@ -26,6 +26,19 @@ describe('Book tests', () => {
     expect(resp.body).toEqual(keeper);
   });
 
+  it('Should create a new Book', async () => {
+    const resp = await request(app).post('/books').send({
+      title: 'Testing for Dummies',
+      release: 2022,
+      author: 'Yours Truly',
+    });
+    expect(resp.status).toEqual(200);
+    expect(resp.body).toHaveProperty('title', 'Testing for Dummies');
+    expect(resp.body).toHaveProperty('release', 2022);
+    expect(resp.body).toHaveProperty('author', 'Yours Truly');
+    expect(resp.body.id).not.toBeUndefined();
+  });
+
   afterAll(() => {
     pool.end();
   });

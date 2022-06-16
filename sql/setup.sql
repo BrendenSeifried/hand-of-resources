@@ -17,8 +17,8 @@ INSERT INTO books (
 
 VALUES 
 ('War As I Knew It', 'George S. Patton', 1947),
-('My Sisters Keeper', 'Jodi Picoult', 2004),
 ('Spice and Wolf', 'Isuna Hasekura', 2006),
+('My Sisters Keeper', 'Jodi Picoult', 2004),
 ('The Late Great Me', 'Sandra Scoppettone', 1976),
 ('Poilu', 'Louis Barthas',  2015),
 ('The Notebook', 'Nicholas Sparks', 1996),

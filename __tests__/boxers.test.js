@@ -56,6 +56,11 @@ describe('Boxers test', () => {
     expect(resp.body).toHaveProperty('losses', 5);
   });
 
+  it('Test for the ability to delete a boxer', async () => {
+    const resp = await request(app).delete('/boxers/2');
+    expect(resp.status).toEqual(200);
+  });
+
   afterAll(() => {
     pool.end();
   });

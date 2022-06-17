@@ -43,13 +43,17 @@ describe('Boxers test', () => {
   });
 
   it('Test that a fighter cant be updated with new props', async () => {
-    const resp = await request(app).get('/boxers/3').send({
+    const resp = await request(app).put('/boxers/3').send({
       name: 'Teddy Atlas',
       dob: 'July 29, 1956',
       wins: 100,
       losses: 5,
     });
     expect(resp.status).toEqual(200);
+    expect(resp.body).toHaveProperty('name', 'Teddy Atlas');
+    expect(resp.body).toHaveProperty('dob', 'July 29, 1956');
+    expect(resp.body).toHaveProperty('wins', 100);
+    expect(resp.body).toHaveProperty('losses', 5);
   });
 
   afterAll(() => {

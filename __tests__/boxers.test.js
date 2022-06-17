@@ -29,6 +29,11 @@ describe('Boxers test', () => {
     expect(resp.body).toHaveProperty('losses', 23);
   });
 
+  it('Test that /boxers/:id is routing correctly', async () => {
+    const resp = await request(app).get('/boxers/8');
+    expect(resp.status).toEqual(200);
+  });
+
   afterAll(() => {
     pool.end();
   });

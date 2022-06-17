@@ -1,7 +1,8 @@
 -- Use this file to define your SQL tables
 -- The SQL in this file will be executed when you run `npm run setup-db`
 DROP TABLE IF EXISTS boxers;
-Drop TABLE IF EXISTS books cascade;
+DROP TABLE IF EXISTS books cascade;
+DROP TABLE IF EXISTS games;
 
 CREATE TABLE books (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -16,6 +17,14 @@ CREATE TABLE boxers (
     dob VARCHAR NOT NULL,
     wins INT NOT NULL,
     losses INT 
+);
+
+CREATE TABLE games (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    title VARCHAR NOT NULL,
+    genre VARCHAR NOT NULL,
+    release INT NOT NULL,
+    console VARCHAR NOT NULL
 );
 
 INSERT INTO books (
@@ -51,3 +60,18 @@ VALUES
 ('Manny Pacquiao', 'December 17, 1978', 62, 8),
 ('George Foreman', 'January 10, 1949', 81, 5),
 ('Evander Holyfield', 'October 19, 1962', 44, 10);
+
+INSERT INTO games (
+    title,
+    release,
+    genre,
+    console
+)
+
+VALUES 
+('Road Rash64', 1999, 'Racing', 'N64'),
+('GoldenEye', 1997, 'Shooter', 'N64'),
+('Wrestling Empire', 2021, 'Wrestling', 'PC'),
+('Blitz the League 2', 2008, 'Football', 'Xbox360'),
+('Black and White', 2001, 'RTS', 'PC');
+

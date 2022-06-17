@@ -38,7 +38,7 @@ describe('Boxers test', () => {
       wins: 62,
       losses: 8,
     };
-    expect(pacMan).toHaveProperty('name', 'Manny Pacquiao');
+    expect(resp.body).toEqual(pacMan);
   });
 
   afterAll(() => {

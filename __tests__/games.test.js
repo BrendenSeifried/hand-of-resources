@@ -12,6 +12,19 @@ describe('Games Table Tests', () => {
     expect(select).toHaveProperty('title', 'Road Rash64');
   });
 
+  it('Test to find a single game via ID', async () => {
+    const resp = await request(app).get('/games/4');
+    expect(resp.status).toEqual(200);
+    const oneGame = {
+      id: 4,
+      title: 'Blitz the League 2',
+      release: 2008,
+      genre: 'Football',
+      console: 'Xbox360',
+    };
+    expect(resp.body).toEqual(oneGame);
+  });
+
   afterAll(() => {
     pool.end();
   });

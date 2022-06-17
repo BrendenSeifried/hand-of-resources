@@ -59,6 +59,9 @@ describe('Boxers test', () => {
   it('Test for the ability to delete a boxer', async () => {
     const resp = await request(app).delete('/boxers/2');
     expect(resp.status).toEqual(200);
+
+    const { body } = await request.agent(app).get('/boxers/2');
+    expect(body).toEqual(null);
   });
 
   afterAll(() => {

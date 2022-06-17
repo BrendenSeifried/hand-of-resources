@@ -41,6 +41,16 @@ describe('Boxers test', () => {
     expect(resp.body).toEqual(pacMan);
   });
 
+  it('Test that a fighter cant be updated with new props', async () => {
+    const resp = await request(app).get('/boxers/3').send({
+      name: 'Teddy Atlas',
+      dob: 'July 29, 1956',
+      wins: 100,
+      losses: 5,
+    });
+    expect(resp.status).toEqual(200);
+  });
+
   afterAll(() => {
     pool.end();
   });

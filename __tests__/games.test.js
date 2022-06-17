@@ -16,7 +16,7 @@ describe('Games Table Tests', () => {
     const resp = await request(app).get('/games/4');
     expect(resp.status).toEqual(200);
     const oneGame = {
-      id: 4,
+      id: '4',
       title: 'Blitz the League 2',
       release: 2008,
       genre: 'Football',

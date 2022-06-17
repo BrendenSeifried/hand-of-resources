@@ -13,6 +13,22 @@ describe('Boxers test', () => {
     expect(resp.body.length).toEqual(10);
   });
 
+  it.skip('Test that new Boxer is created', async () => {
+    const resp = await (
+      await request(app).post('/boxers')
+    ).send({
+      name: 'Rocky Balboa',
+      dob: 'July 6, 1945',
+      wins: 57,
+      losses: 23,
+    });
+    expect(resp.status).toEqual(200);
+    expect(resp.body).toHaveProperty('name', 'Rocky Balboa');
+    expect(resp.body).toHaveProperty('dob', 'July 6, 1945');
+    expect(resp.body).toHaveProperty('wins', 57);
+    expect(resp.body).toHaveProperty('losses', 23);
+  });
+
   afterAll(() => {
     pool.end();
   });

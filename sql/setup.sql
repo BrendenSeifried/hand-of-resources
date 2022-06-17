@@ -47,4 +47,7 @@ VALUES
 ('Floyd Mayweather Jr.', 'February 24, 1977', 50, 0),
 ('Mike Tyson', 'June 30, 1966', 58, 6),
 ('Bernard Hopkins', 'January 15, 1965', 55, 8),
-('Roy Jones Jr.', 'January 16, 1969', 66, 9);
+('Roy Jones Jr.', 'January 16, 1969', 66, 9),
+('Manny Pacquiao', 'December 17, 1978', 62, 8),
+('George Foreman', 'January 10, 1949', 81, 5),
+('Evander Holyfield', 'October 19, 1962', 44, 10);

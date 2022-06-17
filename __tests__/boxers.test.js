@@ -29,9 +29,16 @@ describe('Boxers test', () => {
     expect(resp.body).toHaveProperty('losses', 23);
   });
 
-  it('Test that /boxers/:id is routing correctly', async () => {
+  it('Test that /boxers/8 is routing correctly by id', async () => {
     const resp = await request(app).get('/boxers/8');
     expect(resp.status).toEqual(200);
+    const pacMan = {
+      name: 'Manny Pacquiao',
+      dob: 'December 17, 1978',
+      wins: 62,
+      losses: 8,
+    };
+    expect(pacMan).toHaveProperty('name', 'Manny Pacquiao');
   });
 
   afterAll(() => {

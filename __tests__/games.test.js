@@ -26,14 +26,13 @@ describe('Games Table Tests', () => {
   });
 
   it('Test for updating a game with new parameters', async () => {
-    const resp = await (
-      await request(app).put('/games/1')
-    ).send({
+    const resp = await request(app).put('/games/1').send({
       title: 'Testing: The Video Game',
       release: 2022,
       genre: 'Testing',
       console: 'PC',
     });
+
     expect(resp.body).toHaveProperty('title', 'Testing: The Video Game');
     expect(resp.body).toHaveProperty('release', 2022);
     expect(resp.body).toHaveProperty('genre', 'Testing');

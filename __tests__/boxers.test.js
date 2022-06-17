@@ -11,12 +11,12 @@ describe('Boxers test', () => {
   it('Test that list of seven boxers renders', async () => {
     const resp = await request(app).get('/boxers');
     expect(resp.body.length).toEqual(10);
+    const oneBoxer = resp.body.find((data) => data.name === 'Rocky Marciano');
+    expect(oneBoxer).toHaveProperty('name', 'Rocky Marciano');
   });
 
-  it.skip('Test that new Boxer is created', async () => {
-    const resp = await (
-      await request(app).post('/boxers')
-    ).send({
+  it('Test that new Boxer is created', async () => {
+    const resp = await request(app).post('/boxers').send({
       name: 'Rocky Balboa',
       dob: 'July 6, 1945',
       wins: 57,

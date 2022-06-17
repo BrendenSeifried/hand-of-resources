@@ -8,9 +8,12 @@ describe('Boxers test', () => {
     return setup(pool);
   });
 
-  it.skip('Test that list of seven boxers renders', async () => {
+  it('Test that list of seven boxers renders', async () => {
     const resp = await request(app).get('/boxers');
     expect(resp.body.length).toEqual(10);
   });
-  expect(resp.status).toEqual(200);
+
+  afterAll(() => {
+    pool.end();
+  });
 });

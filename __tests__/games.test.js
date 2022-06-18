@@ -39,6 +39,13 @@ describe('Games Table Tests', () => {
     expect(resp.body).toHaveProperty('console', 'PC');
   });
 
+  it('Test to delete game', async () => {
+    const resp = await request(app).delete('/games/3');
+    expect(resp.status).toEqual(200);
+    const { body } = await request(app).get('/games/3');
+    expect(body).toEqual(null);
+  });
+
   afterAll(() => {
     pool.end();
   });

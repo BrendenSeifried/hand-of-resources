@@ -26,6 +26,18 @@ describe('NBA teams table Tests', () => {
     };
     expect(resp.body).toEqual(oneTeam);
   });
+
+  it('Test to create a new NBA Team', async () => {
+    const resp = await request(app).post('/nbateams').send({
+      name: 'Lakers',
+      city: 'Los Angeles',
+      state: 'California',
+    });
+    expect(resp.status).toEqual(200);
+    expect(resp.body).toHaveProperty('name', 'Lakers');
+    expect(resp.body).toHaveProperty('city', 'Los Angeles');
+    expect(resp.body).toHaveProperty('state', 'California');
+  });
   afterAll(() => {
     pool.end();
   });

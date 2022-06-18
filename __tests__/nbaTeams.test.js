@@ -38,6 +38,20 @@ describe('NBA teams table Tests', () => {
     expect(resp.body).toHaveProperty('city', 'Los Angeles');
     expect(resp.body).toHaveProperty('state', 'California');
   });
+
+  it('Test to verify updating a team', async () => {
+    const resp = await (
+      await request(app).put('/nbateams/3')
+    ).send({
+      name: 'Suns',
+      city: 'Phoenix',
+      state: 'Arizona',
+    });
+    expect(resp.status).toEqual(200);
+    expect(resp.body).toEqualProperty('name', 'Suns');
+    expect(resp.body).toEqualProperty('city', 'Phoenix');
+    expect(resp.body).toEqualProperty('state', 'Arizona');
+  });
   afterAll(() => {
     pool.end();
   });

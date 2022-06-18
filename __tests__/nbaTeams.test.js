@@ -14,4 +14,7 @@ describe('NBA teams table Tests', () => {
     const select = resp.body.find((item) => item.name === 'Warriors');
     expect(select).toHaveProperty('name', 'Warriors');
   });
+  afterAll(() => {
+    pool.end();
+  });
 });

@@ -51,6 +51,14 @@ describe('Cars table tests', () => {
     expect(resp.body).toHaveProperty('year', 93);
   });
 
+  it('Test to Delete a Car', async () => {
+    const resp = await request(app).delete('/cars/4');
+    expect(resp.status).toEqual(200);
+    const { body } = await require(app).get('/cars/4');
+    expect(body).toEqual(null);
+    expect();
+  });
+
   afterAll(() => {
     pool.end();
   });

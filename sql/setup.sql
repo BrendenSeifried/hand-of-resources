@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS boxers;
 DROP TABLE IF EXISTS books cascade;
 DROP TABLE IF EXISTS games;
 DROP TABLE IF EXISTS nbaTeams;
+DROP TABLE IF EXISTS cars;
 
 CREATE TABLE books (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -33,6 +34,13 @@ CREATE TABLE nbaTeams (
     name VARCHAR NOT NULL,
     city VARCHAR NOT NULL,
     state VARCHAR NOT NULL
+);
+
+CREATE TABLE cars (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    make VARCHAR NOT NULL,
+    model VARCHAR NOT NULL,
+    year INT NOT NULL
 );
 
 INSERT INTO books (
@@ -95,3 +103,14 @@ VALUES
 ('Celtics', 'Boston', 'Massachusetts'),
 ('Pistons', 'Detroit', 'Michigan');
 
+INSERT INTO cars (
+    make,
+    model,
+    year
+)
+
+VALUES
+('Honda', 'Civic', 1990),
+('Dodge', 'Viper', 1999),
+('Ford', 'Mustang', 1967),
+('Pontiac', 'GTO Judge', 1969);

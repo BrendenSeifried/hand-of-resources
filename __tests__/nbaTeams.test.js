@@ -50,6 +50,14 @@ describe('NBA teams table Tests', () => {
     expect(resp.body).toHaveProperty('city', 'Phoenix');
     expect(resp.body).toHaveProperty('state', 'Arizona');
   });
+
+  it('Test to delete a team', async () => {
+    const resp = await request(app).delete('/nbateams/2');
+    expect(resp.status).toEqual(200);
+    const { body } = await request(app).get('/nbateams/2');
+    expect(body).toEqual(null);
+  });
+
   afterAll(() => {
     pool.end();
   });

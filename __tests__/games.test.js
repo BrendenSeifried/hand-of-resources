@@ -46,6 +46,22 @@ describe('Games Table Tests', () => {
     expect(body).toEqual(null);
   });
 
+  it('Test to Create a new game', async () => {
+    const resp = await (
+      await request(app).post('/games')
+    ).send({
+      title: 'New Game 101',
+      release: 2024,
+      genre: 'RPG',
+      console: 'N64',
+    });
+    expect(resp.status).toEqual(200);
+    expect(resp.body).toHaveProperty('title', 'New Game 101');
+    expect(resp.body).toHaveProperty('release', 2024);
+    expect(resp.body).toHaveProperty('genre', 'RPG');
+    expect(resp.body).toHaveProperty('console', 'N64');
+  });
+
   afterAll(() => {
     pool.end();
   });

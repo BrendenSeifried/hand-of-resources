@@ -20,9 +20,8 @@ describe('Cars table tests', () => {
     const resp = await request(app).get('/cars/4');
     expect(resp.status).toEqual(200);
     const carSpecs = {
-      id: '4',
-      make: 'Honda',
-      model: 'Civic',
+      make: 'Pontiac',
+      model: 'GTO Judge',
       year: 1969,
     };
     expect(resp.body).toEqual(carSpecs);

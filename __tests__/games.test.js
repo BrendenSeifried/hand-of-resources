@@ -47,9 +47,7 @@ describe('Games Table Tests', () => {
   });
 
   it('Test to Create a new game', async () => {
-    const resp = await (
-      await request(app).post('/games')
-    ).send({
+    const resp = await request(app).post('/games').send({
       title: 'New Game 101',
       release: 2024,
       genre: 'RPG',

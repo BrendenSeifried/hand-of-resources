@@ -14,6 +14,18 @@ describe('NBA teams table Tests', () => {
     const select = resp.body.find((item) => item.name === 'Warriors');
     expect(select).toHaveProperty('name', 'Warriors');
   });
+
+  it('Test to render a single team by Id', async () => {
+    const resp = await request(app).get('/nbaTeams/1');
+    expect(resp.status).toEqual(200);
+    const oneTeam = {
+      id: '1',
+      name: 'Bulls',
+      city: 'Chicago',
+      state: 'illinois',
+    };
+    expect(resp.body).toEqual(oneTeam);
+  });
   afterAll(() => {
     pool.end();
   });

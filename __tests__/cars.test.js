@@ -40,9 +40,7 @@ describe('Cars table tests', () => {
   });
 
   it('Test to update car', async () => {
-    const resp = await (
-      await request(app).put('/cars/3')
-    ).setEncoding({
+    const resp = await request(app).put('/cars/3').send({
       make: 'Canopysaurus',
       model: 'Flintmobile',
       year: 93,

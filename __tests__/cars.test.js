@@ -54,9 +54,8 @@ describe('Cars table tests', () => {
   it('Test to Delete a Car', async () => {
     const resp = await request(app).delete('/cars/4');
     expect(resp.status).toEqual(200);
-    const { body } = await require(app).get('/cars/4');
+    const { body } = await request(app).get('/cars/4');
     expect(body).toEqual(null);
-    expect();
   });
 
   afterAll(() => {

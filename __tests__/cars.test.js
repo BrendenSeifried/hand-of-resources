@@ -27,6 +27,18 @@ describe('Cars table tests', () => {
     expect(resp.body).toEqual(carSpecs);
   });
 
+  it('Test to create a car', async () => {
+    const resp = await request(app).post('/cars').send({
+      make: 'Aston Martin',
+      model: 'DB5',
+      year: 1964,
+    });
+    expect(resp.status).toEqual(200);
+    expect(resp.body).toHaveProperty('make', 'Aston Martin');
+    expect(resp.body).toHaveProperty('model', 'DB5');
+    expect(resp.body).toHaveProperty('year', 1964);
+  });
+
   afterAll(() => {
     pool.end();
   });

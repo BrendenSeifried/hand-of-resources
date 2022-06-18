@@ -3,6 +3,7 @@
 DROP TABLE IF EXISTS boxers;
 DROP TABLE IF EXISTS books cascade;
 DROP TABLE IF EXISTS games;
+DROP TABLE IF EXISTS nbaTeams;
 
 CREATE TABLE books (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -25,6 +26,13 @@ CREATE TABLE games (
     genre VARCHAR NOT NULL,
     release INT NOT NULL,
     console VARCHAR NOT NULL
+);
+
+CREATE TABLE nbaTeams (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    city VARCHAR NOT NULL,
+    state VARCHAR NOT NULL
 );
 
 INSERT INTO books (
@@ -74,4 +82,16 @@ VALUES
 ('Wrestling Empire', 2021, 'Wrestling', 'PC'),
 ('Blitz the League 2', 2008, 'Football', 'Xbox360'),
 ('Black and White', 2001, 'RTS', 'PC');
+
+INSERT INTO nbaTeams (
+    name,
+    city,
+    state
+)
+
+VALUES 
+('Bulls', 'Chicago', 'illinois'),
+('Warriors', 'Oakland', 'California'),
+('Celtics', 'Boston', 'Massachusetts'),
+('Pistons', 'Detroit', 'Michigan');
 

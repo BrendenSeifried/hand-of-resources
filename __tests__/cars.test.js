@@ -39,6 +39,20 @@ describe('Cars table tests', () => {
     expect(resp.body).toHaveProperty('year', 1964);
   });
 
+  it('Test to update car', async () => {
+    const resp = await (
+      await request(app).put('/cars/3')
+    ).setEncoding({
+      make: 'Canopysaurus',
+      model: 'Flintmobile',
+      year: 93,
+    });
+    expect(resp.status).toEqual(200);
+    expect(resp.body).toHaveProperty('make', 'Canopysaurus');
+    expect(resp.body).toHaveProperty('model', 'Flintmobile');
+    expect(resp.body).toHaveProperty('year', 93);
+  });
+
   afterAll(() => {
     pool.end();
   });

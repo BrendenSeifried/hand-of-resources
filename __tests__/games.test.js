@@ -4,6 +4,9 @@ const request = require('supertest');
 const app = require('../lib/app');
 
 describe('Games Table Tests', () => {
+  beforeEach(() => {
+    return setup(pool);
+  });
   it('Test to confirm a list of games are rendered', async () => {
     const resp = await request(app).get('/games');
     expect(resp.status).toEqual(200);

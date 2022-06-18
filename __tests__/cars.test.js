@@ -16,6 +16,18 @@ describe('Cars table tests', () => {
     expect(one).toHaveProperty('model', 'Civic');
   });
 
+  it('Test to render car info by ID', async () => {
+    const resp = await request(app).get('/cars/4');
+    expect(resp.status).toEqual(200);
+    const carSpecs = {
+      id: '4',
+      make: 'Honda',
+      model: 'Civic',
+      year: 1969,
+    };
+    expect(resp.body).toEqual(carSpecs);
+  });
+
   afterAll(() => {
     pool.end();
   });
